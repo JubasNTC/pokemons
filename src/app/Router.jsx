@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import { PokemonListPage } from '../pages/PokemonListPage';
 import { Loader } from '../components/Loader';
-//import PokemonPage from '../pages/PokemonPage';
+import { PokemonPage } from '../pages/PokemonPage';
 //import AbilityPage from '../pages/AbilityPage';
 
 const Router = () => {
@@ -14,8 +14,8 @@ const Router = () => {
     <>
       <Switch>
         <Route path="/" exact component={PokemonListPage} />
-        {/* <Route path="/pokemon/:id" component={PokemonPage} />
-      <Route path="/ability/:id" component={AbilityPage} /> */}
+        <Route path="/pokemon/:id" component={PokemonPage} />
+        {/* <Route path="/ability/:id" component={AbilityPage} />  */}
       </Switch>
 
       {isLoading && <Loader />}
