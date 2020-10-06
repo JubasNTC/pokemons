@@ -1,14 +1,9 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setSearchKey, getFilteredData } from '../../actions';
 
-const Search = () => {
-  const dispatch = useDispatch();
-  const data = useSelector(state => state.pokemons);
-
+const Search = ({ setSearchKey }) => {
   const handleSearch = ({ target: { value } }) => {
-    dispatch(setSearchKey(value));
-    dispatch(getFilteredData(data, value));
+    console.dir(value);
+    setSearchKey(value);
   };
 
   return (
@@ -24,4 +19,4 @@ const Search = () => {
   );
 };
 
-export default Search;
+export { Search };

@@ -9,7 +9,6 @@ import { Loader } from '../components/Loader';
 
 const Router = () => {
   const isLoading = useSelector((state) => state.app.isLoading);
-  const appReady = useSelector((state) => state.app.appReady);
 
   return (
     <>
@@ -18,6 +17,7 @@ const Router = () => {
         {/* <Route path="/pokemon/:id" component={PokemonPage} />
       <Route path="/ability/:id" component={AbilityPage} /> */}
       </Switch>
+
       {isLoading && <Loader />}
     </>
   );

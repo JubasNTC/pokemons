@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const Button = ({ handleLoadMore, text }) => {
-  const isLoading = useSelector(state => state.isLoading);
+  const isLoading = useSelector((state) => state.isLoading);
   return (
     <button disabled={isLoading} className="btn" onClick={handleLoadMore}>
       {text}
@@ -10,4 +10,4 @@ const Button = ({ handleLoadMore, text }) => {
   );
 };
 
-export default Button;
+export { Button };

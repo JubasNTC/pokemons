@@ -1,7 +1,7 @@
 import { APP_READY, SET_LOADING, SET_POKEMONS_LIST } from '../actions/app';
 
 const initialState = {
-  pokemons: null,
+  pokemons: [],
   appReady: false,
   isLoading: false,
 };
@@ -14,7 +14,7 @@ const appReducer = (state = initialState, { type, payload }) => {
     case SET_POKEMONS_LIST:
       return {
         ...state,
-        pokemons: payload,
+        pokemons: state.pokemons.concat(payload),
       };
 
     case SET_LOADING:

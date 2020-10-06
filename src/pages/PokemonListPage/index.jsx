@@ -1,33 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Pokemons from '../../components/Pokemons';
-//import Search from '../../components/Search';
-import Button from '../../components/Button/Button';
+import { Button } from '../../components/Button';
+import { Pokemons } from '../../components/Pokemons';
+import { Search } from '../../components/Search';
 
 import { loadPokemons } from '../../actions/app';
+import { filterPokemons } from '../../common/helpers';
 
 const PokemonListPage = () => {
   const dispatch = useDispatch();
   const [offset, setOffset] = useState(0);
-
-  const data = useSelector((state) => state.app.pokemons);
-  const filteredData = useSelector((state) => state.filteredData);
-  const finalData = filteredData !== null ? filteredData : data;
-
-  const handleLoadMore = () => {
-    setOffset(offset + 20);
-  };
+  const [searchKey, setSearchKey] = useState('');
 
   useEffect(() => {
     loadPokemons(dispatch, offset);
   }, [dispatch, offset]);
 
+  const handleLoadMore = () => {
+    setOffset(offset + 20);
+  };
+
+  const pokemons = useSelector(({ app }) => app.pokemons);
+  const pokemonsToRender = searchKey
+    ? filterPokemons(pokemons, searchKey)
+    : pokemons;
+
   return (
     <>
-      {/* <Search /> */}
+      <Search setSearchKey={setSearchKey} />
 
-      {data && <Pokemons pokemons={data} />}
+      {pokemonsToRender && <Pokemons pokemons={pokemonsToRender} />}
 
       <Button text={'load more'} handleLoadMore={handleLoadMore} />
     </>

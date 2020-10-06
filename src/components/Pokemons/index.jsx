@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import PokemonCard from '../Card/Card';
+import { PokemonCard } from '../PokemonCard';
 
 const Pokemons = ({ pokemons }) => {
   return (
@@ -20,4 +20,4 @@ const Pokemons = ({ pokemons }) => {
   );
 };
 
-export default Pokemons;
+export { Pokemons };
