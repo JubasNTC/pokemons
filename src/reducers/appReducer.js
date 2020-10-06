@@ -1,7 +1,15 @@
-import { APP_READY, SET_LOADING, SET_POKEMONS_LIST } from '../actions/app';
+import {
+  APP_READY,
+  SET_ABILITY_INFO,
+  SET_LOADING,
+  SET_POKEMON_DETAILED_INFO,
+  SET_POKEMONS_LIST,
+} from '../actions/app';
 
 const initialState = {
   pokemons: [],
+  pokemonInfo: null,
+  abilityInfo: null,
   appReady: false,
   isLoading: false,
 };
@@ -15,6 +23,18 @@ const appReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         pokemons: state.pokemons.concat(payload),
+      };
+
+    case SET_POKEMON_DETAILED_INFO:
+      return {
+        ...state,
+        pokemonInfo: payload,
+      };
+
+    case SET_ABILITY_INFO:
+      return {
+        ...state,
+        abilityInfo: payload,
       };
 
     case SET_LOADING:

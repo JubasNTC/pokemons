@@ -119,3 +119,10 @@ body {
 .search-bar {
   width: 100%;
 }
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+}
