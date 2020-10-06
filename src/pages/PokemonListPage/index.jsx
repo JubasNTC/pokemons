@@ -21,6 +21,7 @@ const PokemonListPage = () => {
     setOffset(offset + 20);
   };
 
+  const isLoading = useSelector(({ app }) => app.isLoading);
   const pokemons = useSelector(({ app }) => app.pokemons);
   const pokemonsToRender = searchKey
     ? filterPokemons(pokemons, searchKey)
@@ -29,10 +30,10 @@ const PokemonListPage = () => {
   return (
     <>
       <Search setSearchKey={setSearchKey} />
-
       {pokemonsToRender && <Pokemons pokemons={pokemonsToRender} />}
-
-      <Button text={'load more'} handleLoadMore={handleLoadMore} />
+      {!isLoading && !searchKey && (
+        <Button text="load more" handleLoadMore={handleLoadMore} />
+      )}
     </>
   );
 };

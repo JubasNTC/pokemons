@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import shortid from 'shortid';
 
 const PokemonInfo = ({ pokemon }) => {
   return (
@@ -13,17 +14,17 @@ const PokemonInfo = ({ pokemon }) => {
       </div>
       <div className="item">
         <h1>detailedInfo</h1>
-        {pokemon.stats.map((el) => (
-          <p>
-            {el.stat.name} {el.base_stat}{' '}
+        {pokemon.stats.map(({ stat, base_stat }) => (
+          <p key={shortid.generate()}>
+            {stat.name} {base_stat}{' '}
           </p>
         ))}
       </div>
       <div className="item">
         <h2>Abilities</h2>
-        {pokemon.abilities.map((el) => (
-          <Link to={`/ability/${el.ability.name}`}>
-            <p>{el.ability.name}</p>
+        {pokemon.abilities.map(({ ability: { name } }) => (
+          <Link key={shortid.generate()} to={`/ability/${name}`}>
+            <p>{name}</p>
           </Link>
         ))}
       </div>

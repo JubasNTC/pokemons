@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
-import { Button } from '../../components/Button';
-import { PokemonInfo } from '../../components/Pokemon';
+import { PokemonInfo } from '../../components/PokemonInfo';
 import { loadPokemonDetailedInfo } from '../../actions/app';
 
 const PokemonPage = () => {
@@ -17,12 +17,14 @@ const PokemonPage = () => {
 
   return (
     <div className="pokemon-container">
-      <div className="pokemon-info">
-        <Link to="/">
-          <Button text={'go back'} />
-        </Link>
-        {pokemon && <PokemonInfo pokemon={pokemon} />}
-      </div>
+      {pokemon && (
+        <div className="pokemon-info">
+          <Link to="/" as={ArrowBackIcon}>
+            <ArrowBackIcon />
+          </Link>
+          <PokemonInfo pokemon={pokemon} />
+        </div>
+      )}
     </div>
   );
 };
