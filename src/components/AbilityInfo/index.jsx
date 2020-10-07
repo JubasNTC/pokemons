@@ -5,7 +5,7 @@ import shortid from 'shortid';
 const AbilityInfo = ({ ability }) => {
   return (
     <List>
-      {ability.effect_entries.map(({ effect, short_effect }, index) => {
+      {ability.effect_entries.map(({ effect, short_effect }) => {
         return (
           <List.Item key={shortid.generate()}>
             <List.Content>{effect}</List.Content>

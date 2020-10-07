@@ -7,10 +7,6 @@ export const SET_POKEMON_DETAILED_INFO = 'SET_POKEMON_DETAILED_INFO';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_FAILED_REQUEST = 'SET_FAILED_REQUEST';
 
-export const setAppReady = () => ({
-  type: APP_READY,
-});
-
 export const setLoading = (value) => ({
   type: SET_LOADING,
   payload: value,
@@ -52,7 +48,6 @@ export const loadPokemons = async (dispatch, offset) => {
     dispatch(setFailedRequest(true));
     return Promise.reject(e);
   } finally {
-    dispatch(setAppReady());
     dispatch(setLoading(false));
   }
 };
@@ -89,7 +84,6 @@ export const loadAbilityInfo = async (dispatch, id) => {
     dispatch(setFailedRequest(true));
     return Promise.reject(e);
   } finally {
-    dispatch(setAppReady());
     dispatch(setLoading(false));
   }
 };

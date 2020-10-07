@@ -6,7 +6,7 @@ import { Layout } from '../../components/Layout';
 import { PokemonsList } from '../../components/PokemonsList';
 import { Search } from '../../components/Search';
 
-import { loadPokemons } from '../../actions/app';
+import { loadPokemons, setPokemonsList } from '../../actions/app';
 import { filterPokemons } from '../../common/helpers';
 import { INCRIMENT_OFFSET } from '../../common/constants';
 
@@ -14,6 +14,10 @@ const PokemonListPage = () => {
   const dispatch = useDispatch();
   const [offset, setOffset] = useState(0);
   const [searchKey, setSearchKey] = useState('');
+
+  useEffect(() => {
+    setPokemonsList(dispatch, []);
+  }, [dispatch]);
 
   useEffect(() => {
     loadPokemons(dispatch, offset);
