@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { Segment } from 'semantic-ui-react';
 
 import { Layout } from '../../components/Layout';
 import { PokemonInfo } from '../../components/PokemonInfo';
@@ -19,10 +20,10 @@ const PokemonPage = () => {
   return (
     <Layout>
       {pokemon && (
-        <>
+        <Segment>
           <GoBackButton />
           <PokemonInfo pokemon={pokemon} />
-        </>
+        </Segment>
       )}
     </Layout>
   );

@@ -8,6 +8,7 @@ import { Search } from '../../components/Search';
 
 import { loadPokemons } from '../../actions/app';
 import { filterPokemons } from '../../common/helpers';
+import { INCRIMENT_OFFSET } from '../../common/constants';
 
 const PokemonListPage = () => {
   const dispatch = useDispatch();
@@ -19,7 +20,7 @@ const PokemonListPage = () => {
   }, [dispatch, offset]);
 
   const handleLoadMore = () => {
-    setOffset(offset + 20);
+    setOffset(offset + INCRIMENT_OFFSET);
   };
 
   const isLoading = useSelector(({ app }) => app.isLoading);
