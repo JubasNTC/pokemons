@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button, Grid } from 'semantic-ui-react';
 
-import { Button } from '../../components/Button';
-import { Pokemons } from '../../components/Pokemons';
+import { Layout } from '../../components/Layout';
+import { PokemonsList } from '../../components/PokemonsList';
 import { Search } from '../../components/Search';
 
 import { loadPokemons } from '../../actions/app';
@@ -28,13 +29,22 @@ const PokemonListPage = () => {
     : pokemons;
 
   return (
-    <>
-      <Search setSearchKey={setSearchKey} />
-      {pokemonsToRender && <Pokemons pokemons={pokemonsToRender} />}
+    <Layout>
+      <Grid centered>
+        <Grid.Row>
+          <Search setSearchKey={setSearchKey} />
+        </Grid.Row>
+      </Grid>
+
+      {pokemonsToRender && <PokemonsList pokemons={pokemonsToRender} />}
       {!isLoading && !searchKey && (
-        <Button text="load more" handleLoadMore={handleLoadMore} />
+        <Grid centered>
+          <Grid.Row>
+            <Button onClick={handleLoadMore}>Load more</Button>
+          </Grid.Row>
+        </Grid>
       )}
-    </>
+    </Layout>
   );
 };
 

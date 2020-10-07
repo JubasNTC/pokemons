@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
+import { Layout } from '../../components/Layout';
 import { PokemonInfo } from '../../components/PokemonInfo';
 import { loadPokemonDetailedInfo } from '../../actions/app';
 
@@ -16,7 +17,7 @@ const PokemonPage = () => {
   }, [dispatch, id]);
 
   return (
-    <div className="pokemon-container">
+    <Layout>
       {pokemon && (
         <div className="pokemon-info">
           <Link to="/" as={ArrowBackIcon}>
@@ -25,7 +26,7 @@ const PokemonPage = () => {
           <PokemonInfo pokemon={pokemon} />
         </div>
       )}
-    </div>
+    </Layout>
   );
 };
 

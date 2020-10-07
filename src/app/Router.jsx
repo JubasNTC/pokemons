@@ -4,7 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 
 import AbilityPage from '../pages/AbilityPage';
 import { PokemonListPage } from '../pages/PokemonListPage';
-import { Loader } from '../components/Loader';
+import { Preloader } from '../components/Preloader';
 import { PokemonPage } from '../pages/PokemonPage';
 
 const Router = () => {
@@ -17,7 +17,7 @@ const Router = () => {
         <Route path="/pokemon/:id" component={PokemonPage} />
         <Route path="/ability/:id" component={AbilityPage} />
       </Switch>
-      {isLoading && <Loader />}
+      {isLoading && <Preloader />}
     </>
   );
 };

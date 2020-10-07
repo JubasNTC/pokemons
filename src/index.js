@@ -8,6 +8,7 @@ import { history } from './app/history';
 import { store } from './app/store';
 import * as serviceWorker from './serviceWorker';
 
+import 'semantic-ui-css/semantic.min.css';
 import './scss/index.scss';
 
 ReactDOM.render(

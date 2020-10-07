@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
+import { Layout } from '../../components/Layout';
 import { AbilityInfo } from '../../components/AbilityInfo';
 import { loadAbilityInfo } from '../../actions/app';
 
@@ -17,14 +18,14 @@ const AbilityPage = ({ history: { goBack } }) => {
   }, [dispatch, id]);
 
   return (
-    <div className="pokemon-container">
+    <Layout>
       {ability && (
         <div className="pokemon-info">
           <ArrowBackIcon onClick={goBack} />
           <AbilityInfo ability={ability} />
         </div>
       )}
-    </div>
+    </Layout>
   );
 };
 
