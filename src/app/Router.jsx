@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 
-import AbilityPage from '../pages/AbilityPage';
+import { AbilityPage } from '../pages/AbilityPage';
 import { PokemonListPage } from '../pages/PokemonListPage';
 import { Preloader } from '../components/Preloader';
 import { PokemonPage } from '../pages/PokemonPage';

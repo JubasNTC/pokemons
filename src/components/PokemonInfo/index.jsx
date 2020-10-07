@@ -1,34 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import shortid from 'shortid';
+import { Grid, Image, Segment } from 'semantic-ui-react';
+
+import { StatsList } from '../StatsList';
+import { AbilitiesList } from '../AbilitiesList';
 
 const PokemonInfo = ({ pokemon }) => {
   return (
-    <div className="pokemon-wrapper">
-      <div className="item">
-        <h1>Sprites</h1>
-        <img src={pokemon.sprites.front_default} alt="" />
-        <img src={pokemon.sprites.back_default} alt="" />
-        <img src={pokemon.sprites.front_shiny} alt="" />
-        <img src={pokemon.sprites.back_shiny} alt="" />
-      </div>
-      <div className="item">
-        <h1>detailedInfo</h1>
-        {pokemon.stats.map(({ stat, base_stat }) => (
-          <p key={shortid.generate()}>
-            {stat.name} {base_stat}{' '}
-          </p>
-        ))}
-      </div>
-      <div className="item">
-        <h2>Abilities</h2>
-        {pokemon.abilities.map(({ ability: { name } }) => (
-          <Link key={shortid.generate()} to={`/ability/${name}`}>
-            <p>{name}</p>
-          </Link>
-        ))}
-      </div>
-    </div>
+    <Segment size="big">
+      <h1>Sprites</h1>
+      <Grid>
+        <Grid.Row>
+          <Image src={pokemon.sprites.front_default} size="tiny" />
+          <Image src={pokemon.sprites.back_default} size="tiny" />
+          <Image src={pokemon.sprites.front_shiny} size="tiny" />
+          <Image src={pokemon.sprites.back_shiny} size="tiny" />
+        </Grid.Row>
+      </Grid>
+      <h2>Stast info:</h2>
+      <StatsList stats={pokemon.stats} />
+      <h2>Abilities:</h2>
+      <AbilitiesList abilities={pokemon.abilities} />
+    </Segment>
   );
 };
 

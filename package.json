@@ -53,5 +53,16 @@
     "node-sass": "^4.14.1",
     "prettier": "^2.1.2",
     "redux-devtools-extension": "^2.13.8"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js, jsx}": [
+      "prettier --write",
+      "eslint --debug"
+    ]
   }
 }

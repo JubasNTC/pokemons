@@ -1,14 +1,13 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { withRouter } from 'react-router';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 import { Layout } from '../../components/Layout';
 import { AbilityInfo } from '../../components/AbilityInfo';
 import { loadAbilityInfo } from '../../actions/app';
+import GoBackButton from '../../components/GoBackButton';
 
-const AbilityPage = ({ history: { goBack } }) => {
+const AbilityPage = () => {
   const dispatch = useDispatch();
   const ability = useSelector((state) => state.app.abilityInfo);
   const { id } = useParams();
@@ -21,7 +20,7 @@ const AbilityPage = ({ history: { goBack } }) => {
     <Layout>
       {ability && (
         <div className="pokemon-info">
-          <ArrowBackIcon onClick={goBack} />
+          <GoBackButton />
           <AbilityInfo ability={ability} />
         </div>
       )}
@@ -29,4 +28,4 @@ const AbilityPage = ({ history: { goBack } }) => {
   );
 };
 
-export default withRouter(AbilityPage);
+export { AbilityPage };
