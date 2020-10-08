@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { useParams } from 'react-router-dom';
+import { Segment } from 'semantic-ui-react';
 
+import { Layout } from '../../components/Layout';
 import { PokemonInfo } from '../../components/PokemonInfo';
 import { loadPokemonDetailedInfo } from '../../actions/app';
+import GoBackButton from '../../components/GoBackButton';
 
 const PokemonPage = () => {
   const dispatch = useDispatch();
@@ -16,16 +18,14 @@ const PokemonPage = () => {
   }, [dispatch, id]);
 
   return (
-    <div className="pokemon-container">
+    <Layout>
       {pokemon && (
-        <div className="pokemon-info">
-          <Link to="/" as={ArrowBackIcon}>
-            <ArrowBackIcon />
-          </Link>
+        <Segment>
+          <GoBackButton />
           <PokemonInfo pokemon={pokemon} />
-        </div>
+        </Segment>
       )}
-    </div>
+    </Layout>
   );
 };
 

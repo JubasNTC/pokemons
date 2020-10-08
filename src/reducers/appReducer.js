@@ -2,6 +2,7 @@ import {
   APP_READY,
   SET_ABILITY_INFO,
   SET_LOADING,
+  SET_FAILED_REQUEST,
   SET_POKEMON_DETAILED_INFO,
   SET_POKEMONS_LIST,
 } from '../actions/app';
@@ -12,6 +13,7 @@ const initialState = {
   abilityInfo: null,
   appReady: false,
   isLoading: false,
+  isFailedRequest: false,
 };
 
 const appReducer = (state = initialState, { type, payload }) => {
@@ -41,6 +43,12 @@ const appReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         isLoading: payload,
+      };
+
+    case SET_FAILED_REQUEST:
+      return {
+        ...state,
+        isFailedRequest: payload,
       };
 
     default:
