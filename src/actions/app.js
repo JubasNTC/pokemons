@@ -1,11 +1,15 @@
 import { axios } from '../app/axiosConfig';
 
-export const APP_READY = 'APP_READY';
+export const CLEAR_POKEMONS_LIST = 'CLEAR_POKEMONS_LIST';
 export const SET_ABILITY_INFO = 'SET_ABILITY_INFO';
 export const SET_POKEMONS_LIST = 'SET_POKEMONS_LIST';
 export const SET_POKEMON_DETAILED_INFO = 'SET_POKEMON_DETAILED_INFO';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_FAILED_REQUEST = 'SET_FAILED_REQUEST';
+
+export const clearPokemosList = () => ({
+  type: CLEAR_POKEMONS_LIST,
+});
 
 export const setLoading = (value) => ({
   type: SET_LOADING,

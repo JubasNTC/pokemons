@@ -6,7 +6,14 @@ const Search = ({ setSearchKey }) => {
     setSearchKey(value);
   };
 
-  return <Input placeholder="Search..." onChange={handleSearch} />;
+  return (
+    <Input
+      className="search-input"
+      placeholder="Search..."
+      onChange={handleSearch}
+      fluid
+    />
+  );
 };
 
 export { Search };

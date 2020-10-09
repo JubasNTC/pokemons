@@ -9,7 +9,7 @@ import { store } from './app/store';
 import * as serviceWorker from './serviceWorker';
 
 import 'semantic-ui-css/semantic.min.css';
-import './scss/index.scss';
+import './scss/assets.scss';
 
 ReactDOM.render(
   <React.StrictMode>
