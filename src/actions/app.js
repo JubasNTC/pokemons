@@ -41,10 +41,7 @@ export const loadPokemons = async (dispatch, offset) => {
   try {
     const {
       data: { results },
-    } = await axios({
-      method: 'GET',
-      url: `/pokemon?limit=20&offset=${offset}`,
-    });
+    } = await axios.get(`/pokemon?limit=20&offset=${offset}`);
     dispatch(setPokemonsList(results));
     dispatch(setFailedRequest(false));
     return Promise.resolve(results);
@@ -59,10 +56,7 @@ export const loadPokemons = async (dispatch, offset) => {
 export const loadPokemonDetailedInfo = async (dispatch, id) => {
   dispatch(setLoading(true));
   try {
-    const { data } = await axios({
-      method: 'GET',
-      url: `/pokemon/${id}`,
-    });
+    const { data } = await axios.get(`/pokemon/${id}`);
     dispatch(setPokemonDetailedInfo(data));
     dispatch(setFailedRequest(false));
     return Promise.resolve(data);
@@ -77,10 +71,7 @@ export const loadPokemonDetailedInfo = async (dispatch, id) => {
 export const loadAbilityInfo = async (dispatch, id) => {
   dispatch(setLoading(true));
   try {
-    const { data } = await axios({
-      method: 'GET',
-      url: `/ability/${id}`,
-    });
+    const { data } = await axios.get(`/ability/${id}`);
     dispatch(setAbilityInfo(data));
     dispatch(setFailedRequest(false));
     return Promise.resolve(data);

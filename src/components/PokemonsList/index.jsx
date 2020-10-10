@@ -3,6 +3,7 @@ import { Card } from 'semantic-ui-react';
 import shortid from 'shortid';
 
 import { PokemonCard } from '../PokemonCard';
+import PropTypes from 'prop-types';
 
 const PokemonsList = ({ pokemons }) => {
   return (
@@ -12,6 +13,10 @@ const PokemonsList = ({ pokemons }) => {
       ))}
     </Card.Group>
   );
+};
+
+PokemonsList.propTypes = {
+  pokemons: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export { PokemonsList };

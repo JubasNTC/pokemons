@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Container, Grid } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 const Layout = ({ children }) => {
   return (
@@ -10,6 +11,10 @@ const Layout = ({ children }) => {
       </Grid>
     </Container>
   );
+};
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export { Layout };

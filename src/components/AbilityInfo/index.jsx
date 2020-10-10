@@ -1,5 +1,6 @@
 import React from 'react';
 import { List } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import shortid from 'shortid';
 
 const AbilityInfo = ({ ability }) => {
@@ -15,6 +16,10 @@ const AbilityInfo = ({ ability }) => {
       })}
     </List>
   );
+};
+
+AbilityInfo.propTypes = {
+  ability: PropTypes.object.isRequired,
 };
 
 export { AbilityInfo };
