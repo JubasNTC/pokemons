@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Message, Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 const ErrorMessage = ({ header, text }) => (
   <Message size="huge" icon>
@@ -12,5 +13,10 @@ const ErrorMessage = ({ header, text }) => (
     </Message.Content>
   </Message>
 );
+
+ErrorMessage.propTypes = {
+  header: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+};
 
 export { ErrorMessage };

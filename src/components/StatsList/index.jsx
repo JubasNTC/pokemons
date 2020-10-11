@@ -1,5 +1,6 @@
 import React from 'react';
 import { List } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import shortid from 'shortid';
 
 const StatsList = ({ stats }) => {
@@ -13,6 +14,10 @@ const StatsList = ({ stats }) => {
       ))}
     </List>
   );
+};
+
+StatsList.propTypes = {
+  stats: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export { StatsList };

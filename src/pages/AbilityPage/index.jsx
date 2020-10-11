@@ -10,7 +10,7 @@ import GoBackButton from '../../components/GoBackButton';
 
 const AbilityPage = () => {
   const dispatch = useDispatch();
-  const ability = useSelector((state) => state.app.abilityInfo);
+  const ability = useSelector(({ app: { abilityInfo } }) => abilityInfo);
   const { id } = useParams();
 
   useEffect(() => {
