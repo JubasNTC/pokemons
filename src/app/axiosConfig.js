@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-named-default
 import { default as axiosBase } from 'axios';
 
 export const axios = axiosBase.create({
