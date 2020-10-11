@@ -11,7 +11,7 @@ import GoBackButton from '../../components/GoBackButton';
 const PokemonPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
-  const pokemon = useSelector((state) => state.app.pokemonInfo);
+  const pokemon = useSelector(({ app: { pokemonInfo } }) => pokemonInfo);
 
   useEffect(() => {
     loadPokemonDetailedInfo(dispatch, id);

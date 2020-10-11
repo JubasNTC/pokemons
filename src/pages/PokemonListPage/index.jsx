@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Button, Grid } from 'semantic-ui-react';
+import { Button, Grid, Message } from 'semantic-ui-react';
+import { isEmpty } from 'lodash';
 
 import { Layout } from '../../components/Layout';
 import { PokemonsList } from '../../components/PokemonsList';
 import { Search } from '../../components/Search';
 
-import { loadPokemons, setPokemonsList } from '../../actions/app';
+import { clearPokemosList, loadPokemons } from '../../actions/app';
 import { filterPokemons } from '../../common/helpers';
 import { INCRIMENT_OFFSET } from '../../common/constants';
 
@@ -16,7 +17,7 @@ const PokemonListPage = () => {
   const [searchKey, setSearchKey] = useState('');
 
   useEffect(() => {
-    setPokemonsList(dispatch, []);
+    dispatch(clearPokemosList());
   }, [dispatch]);
 
   useEffect(() => {
@@ -27,11 +28,11 @@ const PokemonListPage = () => {
     setOffset(offset + INCRIMENT_OFFSET);
   };
 
-  const isLoading = useSelector(({ app }) => app.isLoading);
-  const pokemons = useSelector(({ app }) => app.pokemons);
+  const pokemons = useSelector(({ app: { pokemons } }) => pokemons);
   const pokemonsToRender = searchKey
     ? filterPokemons(pokemons, searchKey)
     : pokemons;
+  const isEmptySearchResult = searchKey && isEmpty(pokemonsToRender);
 
   return (
     <Layout>
@@ -40,9 +41,12 @@ const PokemonListPage = () => {
           <Search setSearchKey={setSearchKey} />
         </Grid.Row>
       </Grid>
-
-      {pokemonsToRender && <PokemonsList pokemons={pokemonsToRender} />}
-      {!isLoading && !searchKey && (
+      {isEmptySearchResult ? (
+        <Message>Nothing found</Message>
+      ) : (
+        <PokemonsList pokemons={pokemonsToRender} />
+      )}
+      {!searchKey && (
         <Grid centered>
           <Grid.Row>
             <Button onClick={handleLoadMore}>Load more</Button>

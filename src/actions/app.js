@@ -1,11 +1,15 @@
 import { axios } from '../app/axiosConfig';
 
-export const APP_READY = 'APP_READY';
+export const CLEAR_POKEMONS_LIST = 'CLEAR_POKEMONS_LIST';
 export const SET_ABILITY_INFO = 'SET_ABILITY_INFO';
 export const SET_POKEMONS_LIST = 'SET_POKEMONS_LIST';
 export const SET_POKEMON_DETAILED_INFO = 'SET_POKEMON_DETAILED_INFO';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_FAILED_REQUEST = 'SET_FAILED_REQUEST';
+
+export const clearPokemosList = () => ({
+  type: CLEAR_POKEMONS_LIST,
+});
 
 export const setLoading = (value) => ({
   type: SET_LOADING,
@@ -37,10 +41,7 @@ export const loadPokemons = async (dispatch, offset) => {
   try {
     const {
       data: { results },
-    } = await axios({
-      method: 'GET',
-      url: `/pokemon?limit=20&offset=${offset}`,
-    });
+    } = await axios.get(`/pokemon?limit=20&offset=${offset}`);
     dispatch(setPokemonsList(results));
     dispatch(setFailedRequest(false));
     return Promise.resolve(results);
@@ -55,10 +56,7 @@ export const loadPokemons = async (dispatch, offset) => {
 export const loadPokemonDetailedInfo = async (dispatch, id) => {
   dispatch(setLoading(true));
   try {
-    const { data } = await axios({
-      method: 'GET',
-      url: `/pokemon/${id}`,
-    });
+    const { data } = await axios.get(`/pokemon/${id}`);
     dispatch(setPokemonDetailedInfo(data));
     dispatch(setFailedRequest(false));
     return Promise.resolve(data);
@@ -73,10 +71,7 @@ export const loadPokemonDetailedInfo = async (dispatch, id) => {
 export const loadAbilityInfo = async (dispatch, id) => {
   dispatch(setLoading(true));
   try {
-    const { data } = await axios({
-      method: 'GET',
-      url: `/ability/${id}`,
-    });
+    const { data } = await axios.get(`/ability/${id}`);
     dispatch(setAbilityInfo(data));
     dispatch(setFailedRequest(false));
     return Promise.resolve(data);
