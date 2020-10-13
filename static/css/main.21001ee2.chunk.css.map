@@ -1,0 +1,1 @@
+{"version":3,"sources":["assets.scss"],"names":[],"mappings":"AAAA,QACE,cAAe,CAChB,cAGC,eAAgB,CAChB,kBAAmB,CACnB,WAAY","file":"main.21001ee2.chunk.css","sourcesContent":[".layout {\n  padding-top: 5%;\n}\n\n.search-input {\n  margin-top: 15px;\n  margin-bottom: 15px;\n  width: 250px;\n}\n"]}
